@@ -1,46 +1,246 @@
-<html>
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="">
+	<![endif]-->
+<!--[if IE 7]>
+	<html class="no-js lt-ie9 lt-ie8" lang="">
+		<![endif]-->
+<!--[if IE 8]>
+		<html class="no-js lt-ie9" lang="">
+			<![endif]-->
+<!--[if gt IE 8]>
+			<!-->
+<html class="no-js" lang="">
+  <!--
+				<![endif]-->
   <head>
-    <title> Person Information </title>
-    <meta charset="UTF-8">
-    <script>
-      var baseurl = "http://localhost:8080/admin/getcenterdetails";
-      function loadPersons(){
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET",baseurl ,true);
-        xmlhttp.onreadystatechange = function() {
-          if(xmlhttp.readyState ===4 && xmlhttp.status ===200){
-            var persons = JSON.parse(xmlhttp.responseText);
-            var tbltop = `<table>
-			    <tr><th>Id</th><th>First Name</th><th>Last Name</th><th>Age</th></tr>`;
-            //main table content we fill from data from the rest call
-            var main ="";
-            for (i = 0; i < persons.length; i++){
-              main += "<tr><td>"+persons[i].id+"</td><td>"+persons[i].firstName+"</td><td>"+persons[i].lastName+"</td><td>"+persons[i].age+"</td></tr>";
-            }
-            var tblbottom = "</table>";
-            var tbl = tbltop + main + tblbottom;
-            document.getElementById("personinfo").innerHTML = tbl;
-          }
-        };
-        xmlhttp.send();
-      }
-      window.onload = function(){
-        loadPersons();
-      }
-    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Newline Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/fontAwesome.css">
+    <link rel="stylesheet" href="css/templatemo-style.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script src="./script.js"></script>
+    <script lang="javascript" src="xlsx.full.min.js"></script>
   </head>
   <body>
-    <div id="personinfo"> </div>
+    <div class="overlay"></div>
+    <section class="top-part">
+      <video controls autoplay loop>
+        <source src="videos/video.mp4" type="video/mp4">
+        <source src="videos/video.ogg" type="video/ogg"> Your browser does not support the video tag.
+      </video>
+    </section>
+    <section class="cd-hero">
+      <div class="cd-slider-nav">
+        <nav>
+          <span class="cd-marker item-1"></span>
+          <ul>
+            <li class="selected">
+              <a href="#0">
+                <div class="image-icon">
+                  <img src="img/home-icon.png">
+                </div>
+                <h6>Welcome</h6>
+              </a>
+            </li>
+            <li>
+              <a href="#0">
+                <div class="image-icon">
+                  <img src="img/about-icon.png">
+                </div>
+                <h6>Upload</h6>
+              </a>
+            </li>
+            <li>
+              <a href="#0">
+                <div class="image-icon">
+                  <img src="img/projects-icon.png">
+                </div>
+                <h6>Analyze</h6>
+              </a>
+            </li>
+            <li>
+              <a href="#0">
+                <div class="image-icon">
+                  <img src="img/projects-icon.png">
+                </div>
+                <h6>Responses</h6>
+              </a>
+            </li>
+            <li>
+              <a href="#0">
+                <div class="image-icon">
+                  <img src="img/contact-icon.png">
+                </div>
+                <h6>About Us</h6>
+              </a>
+            </li>
+            <li>
+				<button id="logout" class="image-icon" onclick="exit()">
+					<img src="img/logout.png" alt="logout">
+				</button>
+				<h6>Logout</h6>
+			</li>
+            <!-- <li><a href="#0"><div class="image-icon"><img src="img/projects-icon.png"></div><h6>Projects</h6></a></li><li><a href="#0"><div class="image-icon"><img src="img/contact-icon.png"></div><h6>Contact Us</h6></a></li> -->
+          </ul>
+        </nav>
+      </div>
+      <!-- .cd-slider-nav -->
+      <ul class="cd-hero-slider">
+        <li class="selected">
+          <div class="heading">
+            <h1>Johnson & Johnson</h1>
+          </div>
+          <div class="cd-full-width first-slide">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="content first-content">
+                    <h4>About Johnson & Johnson</h4>
+                    <p>Johnson & Johnson (J&J) is an American multinational corporation founded in 1886 that develops medical devices, pharmaceuticals, and consumer packaged goods. Its common stock is a component of the Dow Jones Industrial Average and the company is ranked No. 36 on the 2021 Fortune 500 list of the largest United States corporations by total revenue.[6] Johnson & Johnson is one of the world's most valuable companies, and is one of only two U.S.-based companies that has a prime credit rating of AAA,[7][8] higher than that of the United States government. </p>
+                    <div class="primary-button">
+                      <a href="https://www.jnj.com/" target="_blank">Discover More</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="heading">
+            <h1>Upload</h1>
+            <span>Upload the list of respondents</span>
+          </div>
+          <div class="cd-half-width second-slide">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="content second-content">
+                    <div class="row">
+                      <div class="col-md-7 left-image">
+                        <img src="img/left-about-image.jpg">
+                      </div>
+                      <div class="col-md-5">
+                        <div class="right-about-text">
+                          <h4>Upload</h4>
+                          <p>a person who replies to something, especially one supplying information for a survey or questionnaire or responding to an advertisement.</p>
+                          <div class="primary-button">
+                            <!-- <a href="#">Discover More</a> -->
+                            <input class="tablinks" type="file" id="fileUploader" name="Upload" accept=".xls, .xlsx" onchange="upload(this)" />
+                            <button class="tablinks" type="button" id="uploadExcel" onclick="uploadClick()">Upload</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="row"><div class="col-md-7"><div class="left-about-text"><h4>What we do?</h4><p>Nam aliquam ultrices interdum. Vivamus metus mi, accumsan a tincidunt a, efficitur id felis. Vivamus non nibh malesuada, vestibulum nulla in, iaculis sem. Aenean tincidunt faucibus ipsum, ac aliquet nunc accumsan sed. Nulla sodales nunc sit amet libero egestas, ut interdum ex congue.</p><div class="primary-button"><a href="#">Discover More</a></div></div></div><div class="col-md-5 right-image"><img src="img/right-about-image.jpg"></div></div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="heading">
+            <h1>List of Respondents</h1>
+            <span>Select the Survey from the drop down and send the questionnaire to the respondents</span>
+          </div>
+          <div class="cd-half-width third-slide">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="content third-content">
+                    <select id="surveys" onchange="show(this)">
+                      <option value="">-- Select --</option>
+                    </select>
+                    <div class="row">
+                      <div id="respondentdetails"></div>
+                      <!--<div class="col-md-7 left-image"><img src="img/left-feature-image.png"></div> -->
+                      <div class="col-md-5"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="heading">
+            <h1>Responses</h1>
+            <span>Here you can check our the responses from respondents</span>
+          </div>
+          <div class="cd-half-width third-slide">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="content third-content">
+                    <select id="surveys1" onchange="showSurveyRespondents()">
+                      <option value="">-- Select --</option>
+                    </select>
+                    <div class="row">
+                      <div id="responsedetails"></div>
+                      <div id="userresponses"></div>
+                      <!--<div class="col-md-7 left-image"><img src="img/left-feature-image.png"></div> -->
+                      <div class="col-md-5"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+				<div class="heading"></div>
+				<div class="cd-half-width second-slide">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="content second-content">
+									<div class="row">
+										<div class="col-md-7 left-image" style="width:50%;height:50%">
+											<img src="img/mugdha.jpeg" alt="left-about-image"  style="width:50%;height:50%">
+										</div>
+										<div class="col-md-5">
+											<div style="text-align: centre;">
+												<p>
+													<br> <br> <br>Mugdha Hemant Rane<br>
+													mhr8596@nyu.edu<br> Masters In Computer Engineering<br>
+												</p>
+												<div class="primary-button">
+													<a href="https://www.linkedin.com/in/mugdharane/"
+														target="_blank">Discover More</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+      </ul>
+      <!-- .cd-hero-slider -->
+    </section>
+    <!-- .cd-hero -->
+    <footer>
+      <p>Copyright &copy; 2020 Your Company | Designed by <em>Template Mo</em>
+      </p>
+    </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+      window.jQuery || document.write(' < script src = "js/vendor/jquery-1.11.2.min.js" > < \/script>')
+    </script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
-
-<!-- <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head> 
-    <title>static</title> 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-    <p th:text="'Hello, ' + ${name} + '!'" />
-</body>
-</html>-->
